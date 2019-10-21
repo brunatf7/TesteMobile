@@ -72,13 +72,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
 
             cardView.setOnClickListener(this);
+            textViewName.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            if (view.getId() == cardView.getId() || view.getId() == textViewName.getId()){
-                movieClickListener.onItemClick(getLayoutPosition(), view);
-            }
+
+            movieClickListener.onItemClick(getLayoutPosition(), view);
 
         }
     }

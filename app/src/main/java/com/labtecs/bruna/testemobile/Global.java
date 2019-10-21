@@ -1,5 +1,6 @@
 package com.labtecs.bruna.testemobile;
 
+import com.labtecs.bruna.testemobile.Services.TMDbImageService;
 import com.labtecs.bruna.testemobile.Services.TMDbMovieService;
 import com.labtecs.bruna.testemobile.Services.TMDbSearchService;
 
@@ -17,6 +18,11 @@ public class Global {
 
     public static final Retrofit retrofitSearch = new Retrofit.Builder()
             .baseUrl(TMDbSearchService.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+    public static final Retrofit retrofitImage = new Retrofit.Builder()
+            .baseUrl(TMDbImageService.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 }

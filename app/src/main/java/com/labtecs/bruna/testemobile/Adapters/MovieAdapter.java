@@ -1,10 +1,12 @@
 package com.labtecs.bruna.testemobile.Adapters;
 
 import android.content.res.Resources;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.labtecs.bruna.testemobile.Objects.Movie;
@@ -59,20 +61,25 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        LinearLayout cardView;
         TextView textViewName;
 
         MovieViewHolder(View itemView) {
             super(itemView);
 
+            cardView = (LinearLayout) itemView.findViewById(R.id.linear_view_movie);
             textViewName = (TextView) itemView.findViewById(R.id.txt_movie_name);
 
+
+            cardView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-//            if (view.getId() == ) {
-//                movieClickListener.onItemClick(getLayoutPosition(), view);
-//            }
+            if (view.getId() == cardView.getId() || view.getId() == textViewName.getId()){
+                movieClickListener.onItemClick(getLayoutPosition(), view);
+            }
+
         }
     }
 }

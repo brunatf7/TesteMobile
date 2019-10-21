@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.labtecs.bruna.testemobile.Activitys.DetailsActivity;
@@ -84,20 +85,22 @@ public class MovieFragment extends Fragment {
 
     private void setAdapterData() {
         final MovieAdapter adapter = new MovieAdapter(popular.results);
-        adapter.setOnItemClickListener(onClickItem);
+        adapter.setOnItemClickListener(new MovieAdapter.MovieClickListener() {
+            @Override
+            public void onItemClick(int position, View view) {
+
+
+                Intent intent = new Intent(getContext(), DetailsActivity.class);
+
+                intent.putExtra("id", popular.results.get(position).id);
+
+                startActivity(intent);
+
+
+            }
+        });
         recyclerView.setAdapter(adapter);
     }
-
-    public MovieAdapter.MovieClickListener onClickItem = new MovieAdapter.MovieClickListener() {
-        @Override
-        public void onItemClick(int position, View view) {
-            Intent intent = new Intent(getActivity(), DetailsActivity.class);
-
-            intent.putExtra("id", popular.results.get(position).id);
-
-            startActivity(intent);
-        }
-    };
 
     public void setReclerViewLayout(String layout) {
 

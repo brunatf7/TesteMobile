@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Teste Mobile</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_main_toolbar">Filmes</string>
+    <string name="menu_change_layout">Mudar Layout</string>
+
+
+    <string name="hello_movie_fragment">Hello Movie fragment</string>
+    <string name="hello_perfil_fragment">Hello Perfil fragment</string>
+    <string name="title_activity_details">Details</string>
+    <string name="movie_overview">Coringa é uma história original do vilão nunca antes vista no cinema. Arthur Fleck (Joaquin Phoenix) trabalha como palhaço para uma agência de talentos e, toda semana, precisa comparecer a uma agente social, devido aos seus conhecidos problemas mentais. Após ser demitido, Fleck reage mal à gozação de três homens em pleno metrô e os mata. Os assassinatos iniciam um movimento popular contra a elite de Gotham City, da qual Thomas Wayne (Brett Cullen) é seu maior representante. A versão de Phillips sobre Arthur Fleck, um homem desprezado pela sociedade, não é só uma visão realista do personagem, mas também uma lição de vida.\"</string>
+    <string name="data_release">Lançamento 21/12/2008</string>
+    <string name="title_movie">Nome do Filme</string>
 </resources>

@@ -1,8 +1,6 @@
 package com.labtecs.bruna.testemobile.Fragmets;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -14,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.labtecs.bruna.testemobile.Activitys.DetailsActivity;
 import com.labtecs.bruna.testemobile.Adapters.MovieAdapter;
 import com.labtecs.bruna.testemobile.Global;
@@ -25,8 +22,6 @@ import com.labtecs.bruna.testemobile.Services.TMDbMovieService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MovieFragment extends Fragment {
 
@@ -60,6 +55,7 @@ public class MovieFragment extends Fragment {
         return rootView;
     }
 
+
     private void getPopularMovies() {
         TMDbMovieService service = Global.retrofitMovie.create(TMDbMovieService.class);
 
@@ -82,6 +78,8 @@ public class MovieFragment extends Fragment {
             }
         });
     }
+
+
 
     private void setAdapterData() {
         final MovieAdapter adapter = new MovieAdapter(popular.results);

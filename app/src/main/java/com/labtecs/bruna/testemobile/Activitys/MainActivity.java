@@ -1,5 +1,6 @@
 package com.labtecs.bruna.testemobile.Activitys;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -7,8 +8,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.labtecs.bruna.testemobile.Fragmets.MovieFragment;
 import com.labtecs.bruna.testemobile.Fragmets.PerfilFragment;
@@ -56,8 +60,37 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main_activity, menu);
+
+        configSearch(menu);
+
         return true;
 
+    }
+
+    private void configSearch(Menu menu) {
+        MenuItem searchItem = (MenuItem) menu.findItem(R.id.app_bar_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+
+                intent.putExtra("query", query);
+
+                startActivity(intent);
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+
+                return false;
+            }
+        });
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

@@ -24,7 +24,15 @@
         <activity
             android:name=".Activitys.DetailsActivity"
             android:label="@string/title_activity_details"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activitys.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.labtecs.bruna.testemobile.Activitys.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

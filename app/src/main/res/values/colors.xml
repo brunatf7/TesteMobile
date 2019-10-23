@@ -8,4 +8,6 @@
     <color name="black_overlay">#44000000</color>
 
     <color name="text_corpus">#333</color>
+    <color name="tabSelectedColor">#fff</color>
+    <color name="tabUnselectedColor">#aaa</color>
 </resources>

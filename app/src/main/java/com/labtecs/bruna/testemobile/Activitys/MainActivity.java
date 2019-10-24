@@ -24,7 +24,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    ViewPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
 
         MovieFragment movieFragment = new MovieFragment();
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         adapter.addFragment(movieFragment, "Filmes");
         adapter.addFragment(perfilFragment, "Perfil");
+
 
         assert viewPager != null;
         viewPager.setAdapter(adapter);
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     private void configSearch(Menu menu) {
         MenuItem searchItem = (MenuItem) menu.findItem(R.id.app_bar_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
@@ -120,6 +122,31 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.app_bar_change_layout:
+
+                MovieFragment movieFragment = (MovieFragment) adapter.getItem(0);
+
+                movieFragment.changeRecyclerViewLayout();
+
+                String layout = movieFragment.getRecyclerViewLayout();
+
+
+                if(layout == "Grid"){
+                    item.setIcon(R.drawable.ic_list);
+                }else{
+                    item.setIcon(R.drawable.ic_apps);
+                }
+
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

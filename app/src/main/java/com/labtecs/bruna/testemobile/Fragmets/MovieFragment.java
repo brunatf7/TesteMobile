@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.labtecs.bruna.testemobile.Activitys.DetailsActivity;
 import com.labtecs.bruna.testemobile.Adapters.MovieAdapter;
@@ -26,6 +25,8 @@ import retrofit2.Response;
 public class MovieFragment extends Fragment {
 
     public RecyclerView recyclerView;
+    private String layout = "List";
+
     public Popular popular;
 
     public MovieFragment() {
@@ -47,9 +48,8 @@ public class MovieFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        setReclerViewLayout("List");
+        setRecyclerViewLayout();
         getPopularMovies();
-
 
 
         return rootView;
@@ -99,7 +99,7 @@ public class MovieFragment extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
-    public void setReclerViewLayout(String layout) {
+    private void setRecyclerViewLayout() {
 
         RecyclerView.LayoutManager layoutManager;
 
@@ -113,6 +113,21 @@ public class MovieFragment extends Fragment {
                 recyclerView.setLayoutManager(layoutManager);
                 break;
         }
+    }
+
+
+    public String getRecyclerViewLayout(){
+        return layout;
+    }
+
+    public void changeRecyclerViewLayout(){
+        if(layout=="List"){
+            layout = "Grid";
+        }else{
+            layout = "List";
+        }
+
+        setRecyclerViewLayout();
     }
 
 

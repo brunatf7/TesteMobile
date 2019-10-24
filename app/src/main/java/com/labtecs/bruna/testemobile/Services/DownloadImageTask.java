@@ -10,8 +10,17 @@ import java.io.InputStream;
 
 public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
     ImageView bmImage;
+    double scaleWidth, scaleHeight;
+
     public DownloadImageTask(ImageView bmImage) {
         this.bmImage = bmImage;
+        scaleHeight = scaleWidth = 0.8;
+    }
+
+    public DownloadImageTask(ImageView bmImage, double scaleWidth, double scaleHeight) {
+        this.bmImage = bmImage;
+        this.scaleHeight = scaleHeight;
+        this.scaleWidth = scaleWidth;
     }
 
     protected Bitmap doInBackground(String... urls) {
@@ -28,6 +37,8 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
     }
 
     protected void onPostExecute(Bitmap result) {
-        bmImage.setImageBitmap(result);
+        int height = (int) (result.getHeight()*scaleHeight);
+        int width = (int) (result.getWidth()*scaleWidth);
+        bmImage.setImageBitmap(Bitmap.createScaledBitmap(result, width, height, false));
     }
 }

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.labtecs.bruna.testemobile.Objects.Movie;
 import com.labtecs.bruna.testemobile.R;
+import com.labtecs.bruna.testemobile.RoundedImageView;
 import com.labtecs.bruna.testemobile.Services.DownloadImageTask;
 
 import java.util.List;
@@ -101,6 +102,12 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private void initLayoutList(MovieViewHolderList holder, int i) {
         Movie movie = movies.get(i);
         holder.textViewName.setText(movie.title);
+
+        if(movie.backdrop_path != null) {
+            new DownloadImageTask(holder.imageViewMovie,0.2,0.2).execute("https://image.tmdb.org/t/p/original/" + movie.backdrop_path.substring(1));
+        }else{
+            new DownloadImageTask(holder.imageViewMovie,0.2,0.2).execute("https://image.tmdb.org/t/p/original/" + movie.poster_path.substring(1));
+        }
     }
 
     private void initLayoutGrid(MovieViewHolderGrid holder, int i) {
@@ -108,9 +115,9 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         holder.textViewName.setText(movie.title);
 
         if(movie.backdrop_path != null) {
-            new DownloadImageTask(holder.imageViewMovie).execute("https://image.tmdb.org/t/p/original/" + movie.backdrop_path.substring(1));
+            new DownloadImageTask(holder.imageViewMovie,0.4,0.4).execute("https://image.tmdb.org/t/p/original/" + movie.backdrop_path.substring(1));
         }else{
-            new DownloadImageTask(holder.imageViewMovie).execute("https://image.tmdb.org/t/p/original/" + movie.poster_path.substring(1));
+            new DownloadImageTask(holder.imageViewMovie,0.4,0.4).execute("https://image.tmdb.org/t/p/original/" + movie.poster_path.substring(1));
         }
     }
 
@@ -129,16 +136,19 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         LinearLayout cardView;
         TextView textViewName;
+        RoundedImageView imageViewMovie;
 
         MovieViewHolderList(View itemView) {
             super(itemView);
 
             cardView = (LinearLayout) itemView.findViewById(R.id.linear_view_movie);
             textViewName = (TextView) itemView.findViewById(R.id.txt_movie_name);
+            imageViewMovie = (RoundedImageView) itemView.findViewById(R.id.image_movie);
 
 
             cardView.setOnClickListener(this);
             textViewName.setOnClickListener(this);
+            imageViewMovie.setOnClickListener(this);
         }
 
         @Override

@@ -13,31 +13,57 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
         android:focusable="true"
-        cardview:cardCornerRadius="2dp">
+        cardview:cardCornerRadius="0dp">
 
         <LinearLayout
             android:id="@+id/linear_view_movie"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:padding="8dp">
 
-            <TextView
-                android:id="@+id/txt_movie_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:clickable="true"
-                android:lines="1"
-                android:text="Nome do Filme"
-                android:textSize="18sp" />
+            <com.labtecs.bruna.testemobile.RoundedImageView
+                android:id="@+id/image_movie"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_margin="10dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_movie_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:clickable="true"
+                    android:lines="1"
+                    android:text="Nome do Filme"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:clickable="true"
+                    android:lines="1"
+                    android:text="Popularidade do Filme"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
 
         </LinearLayout>
     </android.support.v7.widget.CardView>

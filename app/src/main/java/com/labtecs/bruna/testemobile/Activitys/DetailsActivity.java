@@ -1,10 +1,14 @@
 package com.labtecs.bruna.testemobile.Activitys;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.QuickContactBadge;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +38,18 @@ public class DetailsActivity extends AppCompatActivity {
 
         getDetailsMovie(id);
 
+
+        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fabShare);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, "Ei, da uma olhada nesse filme! https://www.themoviedb.org/movie/"+movie.id);
+                startActivity(Intent.createChooser(intent, "Compartilhar via"));
+            }
+        });
 
     }
 

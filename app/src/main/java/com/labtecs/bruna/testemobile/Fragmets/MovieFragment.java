@@ -25,6 +25,7 @@ import retrofit2.Response;
 public class MovieFragment extends Fragment {
 
     public RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManagerList, layoutManagerGrid;
     private String layout = "List";
 
     public Popular popular;
@@ -47,7 +48,8 @@ public class MovieFragment extends Fragment {
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view_movie);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
+        layoutManagerList = new LinearLayoutManager(getContext());
+        layoutManagerGrid = new GridLayoutManager(getContext(),2);
         setRecyclerViewLayout();
         getPopularMovies();
 
@@ -101,18 +103,19 @@ public class MovieFragment extends Fragment {
 
     private void setRecyclerViewLayout() {
 
-        RecyclerView.LayoutManager layoutManager;
-
         switch (layout){
             case "List":
-                layoutManager = new LinearLayoutManager(getContext());
-                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setLayoutManager(layoutManagerList);
                 break;
             case "Grid":
-                layoutManager = new GridLayoutManager(getContext(),2);
-                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setLayoutManager(layoutManagerGrid);
                 break;
         }
+        if(popular != null){
+            ((MovieAdapter) recyclerView.getAdapter()).changeAdapterViewLayout();
+        }
+
+
     }
 
 

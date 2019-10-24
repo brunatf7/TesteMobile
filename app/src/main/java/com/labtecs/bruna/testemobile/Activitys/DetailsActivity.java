@@ -80,8 +80,10 @@ public class DetailsActivity extends AppCompatActivity {
         textViewOverview.setText(movie.overview);
 
 
-        if(movie.backdrop_path != null){
-            new DownloadImageTask((ImageView) findViewById(R.id.imageViewDetails)).execute("https://image.tmdb.org/t/p/original/"+movie.backdrop_path.substring(1));
+        if(movie.backdrop_path != null) {
+            new DownloadImageTask((ImageView) findViewById(R.id.imageViewDetails)).execute("https://image.tmdb.org/t/p/original/" + movie.backdrop_path.substring(1));
+        }else{
+            new DownloadImageTask((ImageView) findViewById(R.id.imageViewDetails)).execute("https://image.tmdb.org/t/p/original/" + movie.poster_path.substring(1));
         }
 
 
